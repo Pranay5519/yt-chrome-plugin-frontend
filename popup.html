@@ -2,71 +2,141 @@
 <html>
 <head>
   <title>YouTube Comment Analyzer</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Dark Theme */
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
     body {
-      font-family: Arial, sans-serif;
-      width: 400px;
-      padding: 10px;
-      background-color: #1e1e1e;
-      color: #f1f1f1;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background: linear-gradient(145deg, #f8f4ff, #f0e6ff);
+      color: #5a2d82;
+      width: 500px;
+      height: 500px;
+      overflow-y: auto;
+      border-radius: 25px; /* Curvy edges for extension shape */
     }
+
+    /* Header */
     h1 {
-      font-size: 20px;
-      color: #ffffff;
-    }
-    .section {
-      margin-bottom: 15px;
-    }
-    .section-title {
-      font-weight: bold;
-      color: #0099ff;
-      margin-top: 10px;
-      font-size: 16px;
-    }
-    .sentiment-boxes {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .sentiment-box {
-      flex: 1;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      background-color: #333;
-      color: #f1f1f1;
-    }
-    .sentiment-box .label {
-      font-size: 14px;
-      text-transform: uppercase;
-      color: #ccc;
-    }
-    .sentiment-box .percentage {
       font-size: 24px;
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(90deg, #a855f7, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
+
+    /* Section Title */
+    .section-title {
+      font-weight: 600;
+      font-size: 17px;
+      color: #7c3aed;
+      margin-bottom: 10px;
+      padding-left: 10px;
+      border-left: 5px solid #a855f7;
+      border-radius: 8px;
+    }
+
+    /* Comment List */
     .comment-list {
       list-style: none;
-      padding: 0;
     }
+
     .comment-item {
-      margin: 8px 0;
-      padding: 8px;
-      background-color: #444;
-      border-radius: 4px;
+      margin: 10px 0;
+      padding: 12px;
+      background: #ffffff;
+      color: #5a2d82;
+      border-radius: 15px; /* Curvy cards */
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 3px 8px rgba(168, 85, 247, 0.15);
     }
+
+    .comment-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(168, 85, 247, 0.35);
+    }
+
     .comment-sentiment {
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 600;
+      color: #8b5cf6;
+    }
+
+    /* Metrics Container */
+    .metrics-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .metric {
+      flex: 1 1 48%;
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 20px; /* Curvy cards */
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 3px 8px rgba(168, 85, 247, 0.15);
+      color: #5a2d82;
+    }
+
+    .metric:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(168, 85, 247, 0.35);
+    }
+
+    .metric-title {
+      font-size: 13px;
+      color: #7c3aed;
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 6px;
+      color: #5a2d82;
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section, .metric, .comment-item {
+      animation: fadeIn 0.4s ease forwards;
     }
   </style>
 </head>
 <body>
   <h1>YouTube Comment Analyzer</h1>
-  <div id="output" class="section"></div>
+
+  <div id="output" class="section">
+    <div class="section-title">Latest Comments</div>
+    <ul class="comment-list">
+      <li class="comment-item">
+        "This video was amazing!" - <span class="comment-sentiment">Positive</span>
+      </li>
+      <li class="comment-item">
+        "I didn't like the editing." - <span class="comment-sentiment" style="color:#e63946;">Negative</span>
+      </li>
+    </ul>
+  </div>
+
+
+
   <script src="popup.js"></script>
 </body>
 </html>
